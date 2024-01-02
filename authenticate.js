@@ -1,8 +1,14 @@
-
-
+const express = require('express');
+const app = express();
 const mysql = require('mysql');
-const https = require('https'); 
-const crypto = require('crypto');
+const https = require('https');
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+
+// Initialize Express
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Database connection
 const db = mysql.createConnection({
@@ -13,7 +19,6 @@ const db = mysql.createConnection({
 });
 
 // Session management
-const session = require('express-session');
 const sess = {
   secret: 'keyboard cat',
   cookie: {}
@@ -21,15 +26,14 @@ const sess = {
 
 // Login route
 app.post('/login', (req, res) => {
-
   // Get username and password from request
   const username = req.body.username;
   const password = req.body.password;
-  
+
   // Query database
   db.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], (error, results) => {
     if (error) throw error;
-    
+
     // If user exists, set session and redirect
     if (results.length > 0) {
       req.session.user = results[0];
@@ -38,7 +42,6 @@ app.post('/login', (req, res) => {
       res.send('Invalid username or password');
     }
   });
-
 });
 
 // Dashboard route
@@ -57,9 +60,14 @@ app.get('/logout', (req, res) => {
 });
 
 // Create HTTPS server
-https.createServer({
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
-}, app).listen(3000, () => {
-  console.log('Server running on port 3000');  
-});
+https
+  .createServer(
+    {
+      key: fs.readFileSync('server.key'),
+      cert: fs.readFileSync('server.cert')
+    },
+    app
+  )
+  .listen(3000, () => {
+    console.log('Server running on port 3000');
+  });
