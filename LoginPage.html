@@ -5,7 +5,6 @@
   
   <!-- Stylesheet -->
   <style>
-
     /* Dark theme colors */
     :root {
       --bg-color: #1F2937;
@@ -77,24 +76,17 @@
     .btn-login:hover {
       background-color: #3E3CE9;
     }
-
   </style>
-
 </head>
 
 <body>
-
   <div class="login-card">
-
     <h2>Login</h2>  
-
-    <input type="text" class="form-control" placeholder="Username">
-
-    <input type="password" class="form-control" placeholder="Password">
-
-    <button class="btn-login">Log In</button>
-
+    <form action="LoginPage.php" method="POST">
+      <input type="text" class="form-control" name="username" placeholder="Username">
+      <input type="password" class="form-control" name="password" placeholder="Password">
+      <button type="submit" class="btn-login">Log In</button>
+    </form>
   </div>
-
 </body>
 </html>
