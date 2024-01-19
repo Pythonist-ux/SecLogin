@@ -20,6 +20,8 @@ SecLogin is a simple PHP-based authentication system that provides secure user a
 
 4. Ensure your PHP environment is set up and running.
 
+5. If on Local environment make sure to use service like **MailTrap** to verify 2FA
+
    # Functionalities
 1. User Authentication
 
@@ -37,7 +39,8 @@ SecLogin is a simple PHP-based authentication system that provides secure user a
     Invalid username or password displays appropriate error messages.
     Upon successful login, users are redirected to the dashboard (Dashboard.php).
    
-   ![image](https://github.com/Pythonist-ux/SecLogin/assets/83156291/80f1c378-a4e9-4060-ae75-47bbb4f65541)
+   ![image](https://github.com/Pythonist-ux/SecLogin/assets/83156291/378f74e8-e9c8-4ed8-8960-2c473816af41)
+
 
    ![image](https://github.com/Pythonist-ux/SecLogin/assets/83156291/db7fedea-bf83-4fd5-88e7-9cbbcbba8532)
 
@@ -59,6 +62,10 @@ SecLogin is a simple PHP-based authentication system that provides secure user a
     Simulates a two-factor authentication (2FA) process via email (simulated with a random verification code).
 
    ![image](https://github.com/Pythonist-ux/SecLogin/assets/83156291/b7f50222-b032-4d84-8e8c-7cd776f5afcd)
+   
+   ![image](https://github.com/Pythonist-ux/SecLogin/assets/83156291/d4141914-ed13-4d2c-a8c7-179d64139c01)
+   
+   ![image](https://github.com/Pythonist-ux/SecLogin/assets/83156291/923d1dc1-a41a-4cd6-8d73-cd39db524fbb)
 
 
 9. Database Connection
